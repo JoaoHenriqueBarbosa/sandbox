@@ -14,7 +14,6 @@ fetch('https://ghibliapi.herokuapp.com/films')
     return response.json()
   })
   .then(data => {
-    // Work with JSON data here
     data.forEach(movie => {
       const card = document.createElement('div');
       card.setAttribute('class', 'card');
@@ -30,4 +29,8 @@ fetch('https://ghibliapi.herokuapp.com/films')
       card.appendChild(h1);
       card.appendChild(p);
     });
+  }).catch(err => {
+    const errorMessage = document.createElement('marquee')
+    errorMessage.textContent = `Aah, não está funcionando!`
+    app.appendChild(errorMessage)
   });
